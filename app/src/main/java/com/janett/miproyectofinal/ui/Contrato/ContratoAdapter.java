@@ -64,7 +64,7 @@ public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHo
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("inmueble", inmuebles);
-                Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.contratosDetalleFragment, bundle);
+                Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.fragmentContratosDetalle, bundle);
 
             }
         });

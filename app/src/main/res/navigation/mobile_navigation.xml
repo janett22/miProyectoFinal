@@ -61,29 +61,21 @@
         tools:layout="@layout/contratos_fragment" >
         <action
             android:id="@+id/action_contratosFragment_to_contratosDetalleFragment"
-            app:destination="@id/contratosDetalleFragment" />
+            app:destination="@id/fragmentContratosDetalle" />
     </fragment>
     <fragment
-        android:id="@+id/contratosDetalleFragment"
-        android:name="com.janett.miproyectofinal.ui.Contrato.ContratosDetalleFragment"
-        android:label="Detalles"
-        android:layout="@layout/fragment_contratos_detalle">
+        android:id="@+id/fragmentContratosDetalle"
+        android:name="com.janett.miproyectofinal.ui.Contrato.ContratosDetalle"
+        android:label="Informacion Contrato"
+        tools:layout="@layout/fragment_detalle_contrato" >
         <action
-            android:id="@+id/action_contratosDetalleFragment_to_contratosFragment"
-            app:destination="@id/nav_contrato" />
-        <action
-            android:id="@+id/action_contratosDetalleFragment_to_pagosFragment"
+            android:id="@+id/action_fragmentContratosDetalle_to_pagosFragment"
             app:destination="@id/pagosFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/pagosFragment"
-        android:name="com.janett.miproyectofinal.ui.Pago.PagosFragment"
-        android:label="Informacion Pagos"
-        tools:layout="@layout/fragment_item_pagos" >
         <action
-            android:id="@+id/action_pagosFragment_to_contratosDetalleFragment"
-            app:destination="@id/contratosDetalleFragment" />
+            android:id="@+id/action_fragmentContratosDetalle_to_nav_contrato"
+            app:destination="@id/nav_contrato" />
     </fragment>
+
     <fragment
         android:id="@+id/nav_cerrar"
         android:name="com.janett.miproyectofinal.ui.CerrarSesion.CerrarSesionFragment"
@@ -99,4 +91,13 @@
         android:name="com.janett.miproyectofinal.MenuActivity"
         android:label="app_bar_menu"
         tools:layout="@layout/app_bar_menu" />
+    <fragment
+        android:id="@+id/pagosFragment"
+        android:name="com.janett.miproyectofinal.ui.Pago.PagosFragment"
+        android:label="fragment_item_pagos"
+        tools:layout="@layout/fragment_item_pagos" >
+        <action
+            android:id="@+id/action_pagosFragment_to_fragmentContratosDetalle"
+            app:destination="@id/fragmentContratosDetalle" />
+    </fragment>
 </navigation>

@@ -23,6 +23,7 @@ public class ContratosViewModel extends AndroidViewModel {
     public ContratosViewModel(@NonNull Application application) {
 
         super(application);
+        context = application.getApplicationContext();
     }
 
 

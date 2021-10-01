@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15648148148148147" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/background_gradient.xml" value="0.15648148148148147" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/activity_menu.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/adapter_inmueble.xml" value="0.10739614994934144" />
@@ -15,6 +17,8 @@
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_contrato.xml" value="0.1094224924012158" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_contrato_detalle.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_contratos_detalle.xml" value="0.15625" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_detalle_contrato.xml" value="0.225" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_detalle_contratos.xml" value="0.225" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_detalle_inmuebles.xml" value="0.1" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_detalle_inquilinos.xml" value="0.1" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_home.xml" value="0.1094224924012158" />
@@ -32,7 +36,7 @@
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_item_inmuebles.xml" value="0.14" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_item_inqui.xml" value="0.151268115942029" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_item_inquilinos.xml" value="0.19293478260869565" />
-        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_item_pagos.xml" value="0.1265625" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_item_pagos.xml" value="0.33" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_perfil.xml" value="0.1" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_slideshow.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/fragment_ubicacion.xml" value="0.1094224924012158" />
