@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_inicio">
+
+    <fragment
+        android:id="@+id/nav_inicio"
+        android:name="com.janett.miproyectofinal.ui.Ubicacion.UbicacionFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_ubicacion" />
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.janett.miproyectofinal.ui.Usuario.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/nav_inmueble"
+        android:name="com.janett.miproyectofinal.ui.Inmueble.InmuebleFragment"
+        android:label="Inmuebles"
+        tools:layout="@layout/fragment_inmuebles" >
+        <action
+            android:id="@+id/action_nav_inmueble_to_inmuebleDetalleFragment"
+            app:destination="@id/inmuebleDetalleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_inquilinos"
+        android:name="com.janett.miproyectofinal.ui.Inquilino.InquilinoFragment"
+        android:label="Inquilinos"
+        tools:layout="@layout/fragment_inquilinos" >
+        <action
+            android:id="@+id/action_nav_inquilinos_to_inquilinosDetalleFragment"
+            app:destination="@id/inquilinosDetalleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inmuebleDetalleFragment"
+        android:name="com.janett.miproyectofinal.ui.Inmueble.InmuebleDetalleFragment"
+        android:label="Informacion Inmuebles"
+        tools:layout="@layout/fragment_detalle_inmuebles" >
+        <action
+            android:id="@+id/action_inmuebleDetalleFragment_to_nav_inmueble"
+            app:destination="@id/nav_inmueble" />
+    </fragment>
+    <fragment
+        android:id="@+id/inquilinosDetalleFragment"
+        android:name="com.janett.miproyectofinal.ui.Inquilino.InquilinosDetalleFragment"
+        android:label="Informacion Inquilinos"
+        tools:layout="@layout/fragment_detalle_inquilinos" >
+
+    <action
+            android:id="@+id/action_inquilinosDetalleFragment_to_nav_inquilinos"
+            app:destination="@id/nav_inquilinos" />
+    </fragment>
+
+     <fragment
+        android:id="@+id/nav_contrato"
+        android:name="com.janett.miproyectofinal.ui.Contrato.ContratosFragment"
+        android:label="Contratos"
+        tools:layout="@layout/contratos_fragment" >
+        <action
+            android:id="@+id/action_contratosFragment_to_contratosDetalleFragment"
+            app:destination="@id/contratosDetalleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contratosDetalleFragment"
+        android:name="com.janett.miproyectofinal.ui.Contrato.ContratosDetalleFragment"
+        android:label="Detalles"
+        android:layout="@layout/fragment_contratos_detalle">
+        <action
+            android:id="@+id/action_contratosDetalleFragment_to_contratosFragment"
+            app:destination="@id/nav_contrato" />
+        <action
+            android:id="@+id/action_contratosDetalleFragment_to_pagosFragment"
+            app:destination="@id/pagosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagosFragment"
+        android:name="com.janett.miproyectofinal.ui.Pago.PagosFragment"
+        android:label="Informacion Pagos"
+        tools:layout="@layout/fragment_item_pagos" >
+        <action
+            android:id="@+id/action_pagosFragment_to_contratosDetalleFragment"
+            app:destination="@id/contratosDetalleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_cerrar"
+        android:name="com.janett.miproyectofinal.ui.CerrarSesion.CerrarSesionFragment"
+        android:label="Cerrar Sesion"
+        tools:layout="@layout/cerrar_sesion_fragment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.janett.miproyectofinal.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/menuActivity"
+        android:name="com.janett.miproyectofinal.MenuActivity"
+        android:label="app_bar_menu"
+        tools:layout="@layout/app_bar_menu" />
+</navigation>
