@@ -45,12 +45,12 @@ public class CerrarSesionFragment extends Fragment {
     public void cerrarSesion() {
 
         new AlertDialog.Builder(getContext())
-                .setTitle("Cerrar de sesión")
+                .setTitle("Cerrar sesión")
                 .setMessage("Está seguro de que desea cerrar la sesión?")
                 .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        cerrarSesionViewModel.cerrarSesion();
+
                         System.exit(0);
                     }
                 })

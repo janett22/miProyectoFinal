@@ -45,22 +45,22 @@ public class InmuebleDetalleFragment extends Fragment {
         inmuebleDetalleViewModel.getInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble inmueble) {
-                binding.tvId.setText(inmueble.getIdInmueble()+"");
-                binding.tvDireccion.setText(inmueble.getDireccion());
-                binding.tvAmbientes.setText(inmueble.getAmbientes()+"");
-                binding.tvPrecio.setText(inmueble.getPrecio()+"");
-                binding.tvUso.setText(inmueble.getUso());
+                binding.tvCodigoInmueble.setText(inmueble.getIdInmueble()+"");
+                binding.tvDireccionInmueble.setText(inmueble.getDireccion());
+                binding.tvAmbiestesInmueble.setText(inmueble.getAmbientes()+"");
+                binding.tvPrecioInmueble.setText(inmueble.getPrecio()+"");
+                binding.tvUsoInmueble.setText(inmueble.getUso());
                 binding.tvTipo.setText(inmueble.getTipo());
 
                 Glide.with(getContext())
                         .load(inmueble.getImagen())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(binding.ivImagenInmueble);
-                binding.cbEstado.setOnClickListener(new View.OnClickListener() {
+                        .into(binding.ivFotoInmueble);
+                binding.cbEstadoInmueble.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         inmuebleDetalleViewModel.cargarCambios(
-                                binding.cbEstado.isChecked());
+                                binding.cbEstadoInmueble.isChecked());
 
                     }
                 });

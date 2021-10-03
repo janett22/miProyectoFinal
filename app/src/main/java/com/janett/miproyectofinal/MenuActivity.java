@@ -20,8 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.janett.miproyectofinal.databinding.ActivityMenuBinding;
 import com.janett.miproyectofinal.modelo.Propietario;
+import com.janett.miproyectofinal.request.ApiClient;
 import com.janett.miproyectofinal.ui.Inmueble.InmuebleViewModel;
-
 public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -81,9 +81,12 @@ public class MenuActivity extends AppCompatActivity {
         ImageView avatar = header.findViewById(R.id.imgAvatar);
         TextView usuario = header.findViewById(R.id.tvUsuario);
         TextView mail = header.findViewById(R.id.tvMail);
-        Propietario p = (Propietario) getIntent().getBundleExtra("propietario").getSerializable("propietario");
-        mail.setText(p.getEmail());
+        ApiClient api =  ApiClient.getApi();
+        Propietario p = api.obtenerUsuarioActual();
         avatar.setImageResource(p.getAvatar());
+        usuario.setText(p.getNombre()+ " "+ p.getApellido());
+        mail.setText(p.getEmail());
+
     }
 
 }

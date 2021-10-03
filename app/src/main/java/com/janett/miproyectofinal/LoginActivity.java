@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +31,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity implements SensorEventListener {
     private EditText usuario, contrasenia;
     private Button btLogin;
-    private ImageView avatar;
+    private ImageView icono;
     private LoginViewModel vm;
     private SensorManager sensorManager;
     private List<Sensor> sensores;
@@ -51,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
                 new AlertDialog.Builder(LoginActivity.this)
                         .setTitle("Informacion")
                         .setMessage(mensaje)
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -61,15 +63,6 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
             }
         });
 
-        vm.getOkMutable().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
 
     }
 
@@ -113,9 +106,9 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
     }
 
     private void inicializarVista() {
-        usuario = findViewById(R.id.etMail);
-        contrasenia = findViewById(R.id.etPassword);
-        avatar = findViewById(R.id.ivLogin);
+        usuario = findViewById(R.id.etUsuario);
+        contrasenia = findViewById(R.id.etContraseña);
+        icono = findViewById(R.id.ivIcono);
         btLogin = findViewById(R.id.btLogin);
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,5 +137,3 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
 
     }
 }
-
-

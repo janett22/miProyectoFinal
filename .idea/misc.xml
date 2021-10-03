@@ -5,11 +5,19 @@
       <map>
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15648148148148147" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/background_gradient.xml" value="0.15648148148148147" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/border_bottom.xml" value="0.14444444444444443" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/card.xml" value="0.1425925925925926" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/cerrar.xml" value="0.14166666666666666" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/esquinas_redomdeadas.xml" value="0.14166666666666666" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/logininput.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/drawable/side_nav_bar.xml" value="0.14537037037037037" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/activity_login.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/activity_menu.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/adapter_inmueble.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/app_bar_menu.xml" value="0.1" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/border_bottom.xml" value="0.10739614994934144" />
+        <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/border_top.xml" value="0.10739614994934144" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/cerrar_sesion_fragment.xml" value="0.1094224924012158" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/content_menu.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/Janett/AndroidStudioProjects/miProyectoFinal/app/src/main/res/layout/contratos_detalle_fragment.xml" value="0.19927536231884058" />

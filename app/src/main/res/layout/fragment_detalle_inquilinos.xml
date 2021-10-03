@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:fillViewport="true"
-    android:background="@drawable/background_gradient">
+    android:background="@drawable/background_gradient"
+    tools:context="ui.Inquilino.InquilinosDetalleFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toEndOf="@id/guideline2"
-        tools:context="ui.Inquilino.InquilinosDetalleFragment">
+        >
 
 
         <TextView
@@ -34,7 +35,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#9C27B0"
+            android:textColor="@color/purple_500"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -48,7 +49,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#9C27B0"
+            android:textColor="@color/purple_500"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -62,7 +63,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#9C27B0"
+            android:textColor="@color/purple_500"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -87,7 +88,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#9C27B0"
+            android:textColor="@color/purple_500"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -112,7 +113,7 @@
             android:ellipsize="end"
             android:ems="10"
             android:text="Name"
-            android:textColor="#9C27B0"
+            android:textColor="@color/purple_500"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -148,7 +149,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#9C27B0"
+            android:textColor="@color/purple_500"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -162,7 +163,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name"
-            android:textColor="#9C27B0"
+            android:textColor="@color/purple_500"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/guideline2"
@@ -218,7 +219,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Información del inquilino"
-            android:textColor="#673AB7"
+            android:textColor="@color/purple_500"
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

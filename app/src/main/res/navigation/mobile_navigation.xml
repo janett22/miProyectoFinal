@@ -37,19 +37,16 @@
     <fragment
         android:id="@+id/inmuebleDetalleFragment"
         android:name="com.janett.miproyectofinal.ui.Inmueble.InmuebleDetalleFragment"
-        android:label="Informacion Inmuebles"
+        android:label="Inmuebles"
         tools:layout="@layout/fragment_detalle_inmuebles" >
-        <action
-            android:id="@+id/action_inmuebleDetalleFragment_to_nav_inmueble"
-            app:destination="@id/nav_inmueble" />
-    </fragment>
+         </fragment>
     <fragment
         android:id="@+id/inquilinosDetalleFragment"
         android:name="com.janett.miproyectofinal.ui.Inquilino.InquilinosDetalleFragment"
-        android:label="Informacion Inquilinos"
+        android:label="nquilinos"
         tools:layout="@layout/fragment_detalle_inquilinos" >
 
-    <action
+        <action
             android:id="@+id/action_inquilinosDetalleFragment_to_nav_inquilinos"
             app:destination="@id/nav_inquilinos" />
     </fragment>
@@ -57,7 +54,7 @@
      <fragment
         android:id="@+id/nav_contrato"
         android:name="com.janett.miproyectofinal.ui.Contrato.ContratosFragment"
-        android:label="Contratos"
+        android:label="Contratos Vigentes"
         tools:layout="@layout/contratos_fragment" >
         <action
             android:id="@+id/action_contratosFragment_to_contratosDetalleFragment"
@@ -66,7 +63,7 @@
     <fragment
         android:id="@+id/fragmentContratosDetalle"
         android:name="com.janett.miproyectofinal.ui.Contrato.ContratosDetalle"
-        android:label="Informacion Contrato"
+        android:label="Contrato"
         tools:layout="@layout/fragment_detalle_contrato" >
         <action
             android:id="@+id/action_fragmentContratosDetalle_to_pagosFragment"
@@ -94,10 +91,10 @@
     <fragment
         android:id="@+id/pagosFragment"
         android:name="com.janett.miproyectofinal.ui.Pago.PagosFragment"
-        android:label="fragment_item_pagos"
+        android:label="Detalles de Pagos"
         tools:layout="@layout/fragment_item_pagos" >
         <action
-            android:id="@+id/action_pagosFragment_to_fragmentContratosDetalle"
-            app:destination="@id/fragmentContratosDetalle" />
+            android:id="@+id/action_pagosFragment_to_nav_contrato"
+            app:destination="@id/nav_contrato" />
     </fragment>
 </navigation>
