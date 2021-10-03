@@ -27,8 +27,6 @@ public class MenuActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuBinding binding;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +38,9 @@ public class MenuActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        iniciarHeader(navigationView);
+
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_inicio,
@@ -53,7 +54,10 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,4 +72,18 @@ public class MenuActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+
+
+    private void iniciarHeader(NavigationView navigationView){
+        View header = navigationView.getHeaderView(0);
+        ImageView avatar = header.findViewById(R.id.imgAvatar);
+        TextView usuario = header.findViewById(R.id.tvUsuario);
+        TextView mail = header.findViewById(R.id.tvMail);
+        Propietario p = (Propietario) getIntent().getBundleExtra("propietario").getSerializable("propietario");
+        mail.setText(p.getEmail());
+        avatar.setImageResource(p.getAvatar());
+    }
+
 }
