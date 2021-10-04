@@ -19,6 +19,7 @@ import java.util.List;
 public class InquilinoViewModel extends AndroidViewModel {
 
     private MutableLiveData<ArrayList<Inmueble>> listaMutable;
+    Context context;
     ArrayList<Inmueble> inmuebles;
 
     public InquilinoViewModel(@NonNull Application application) {

@@ -17,7 +17,10 @@ import android.widget.TextView;
 import com.janett.miproyectofinal.R;
 import com.janett.miproyectofinal.databinding.FragmentDetalleInmueblesBinding;
 import com.janett.miproyectofinal.databinding.FragmentDetalleInquilinosBinding;
+import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.modelo.Inquilino;
+
+import java.util.ArrayList;
 
 
 public class InquilinosDetalleFragment extends Fragment {
@@ -43,14 +46,17 @@ public class InquilinosDetalleFragment extends Fragment {
                 binding.tvCodigo.setText(inquilino.getIdInquilino()+"");
                 binding.tvNombre.setText(inquilino.getNombre());
                 binding.tvApellido.setText(inquilino.getApellido());
-                binding.tvDNI.setText(inquilino.getDNI().toString());
+                binding.tvDNI.setText(inquilino.getDNI().toString()+"");
                 binding.tvEmail.setText(inquilino.getEmail());
                 binding.tvTelefono.setText(inquilino.getTelefono());
                 binding.tvGarante.setText(inquilino.getNombreGarante());
                 binding.tvTelefonoGarante.setText(inquilino.getTelefonoGarante());
+
             }
         });
-        inquilinoDetalleViewModel.obtenerInquilinos(getArguments());
+
+
+        inquilinoDetalleViewModel.cargarInquilino(getArguments());
         return root;
     }
 }

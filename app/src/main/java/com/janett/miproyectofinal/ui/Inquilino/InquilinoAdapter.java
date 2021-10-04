@@ -21,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.janett.miproyectofinal.R;
 import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.modelo.Inquilino;
+import com.janett.miproyectofinal.request.ApiClient;
 import com.janett.miproyectofinal.ui.Inmueble.InmuebleAdapter;
 
 import java.util.ArrayList;
@@ -48,20 +49,20 @@ public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull InquilinoAdapter.ViewHolder holder, int position) {
-
+        ApiClient api = ApiClient.getApi();
         Inmueble inmueble = lista.get(position);
+        Inquilino inquilino = api.obtenerInquilino(inmueble);
         holder.tvDireccion.setText(lista.get(position).getDireccion());
-
         Glide.with(context)
                 .load(inmueble.getImagen())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivFoto);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.btInquilino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("inmueble", inmueble);
+                bundle.putSerializable("inquilino", inquilino);
                 Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.inquilinosDetalleFragment, bundle);
 
             }

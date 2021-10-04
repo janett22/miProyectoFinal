@@ -31,7 +31,7 @@ public class InquilinoFragment extends Fragment {
 
     private RecyclerView rvInquilinos;
     private InquilinoViewModel inquilinoViewModel;
-    private InmuebleAdapter adapter;
+    private InquilinoAdapter adapter;
     private Context context;
 
 
@@ -51,7 +51,7 @@ public class InquilinoFragment extends Fragment {
 
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
                 rvInquilinos.setLayoutManager(gridLayoutManager);
-                adapter = new InmuebleAdapter((ArrayList<Inmueble>) inmuebles, getContext(), getLayoutInflater());
+                adapter = new InquilinoAdapter((ArrayList<Inmueble>) inmuebles, getContext(), getLayoutInflater());
                 rvInquilinos.setAdapter(adapter);
 
             }

@@ -5,6 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/nav_inicio">
 
+
     <fragment
         android:id="@+id/nav_inicio"
         android:name="com.janett.miproyectofinal.ui.Ubicacion.UbicacionFragment"
@@ -39,11 +40,11 @@
         android:name="com.janett.miproyectofinal.ui.Inmueble.InmuebleDetalleFragment"
         android:label="Inmuebles"
         tools:layout="@layout/fragment_detalle_inmuebles" >
-         </fragment>
+    </fragment>
     <fragment
         android:id="@+id/inquilinosDetalleFragment"
         android:name="com.janett.miproyectofinal.ui.Inquilino.InquilinosDetalleFragment"
-        android:label="nquilinos"
+        android:label="Inquilinos"
         tools:layout="@layout/fragment_detalle_inquilinos" >
 
         <action
@@ -51,7 +52,7 @@
             app:destination="@id/nav_inquilinos" />
     </fragment>
 
-     <fragment
+    <fragment
         android:id="@+id/nav_contrato"
         android:name="com.janett.miproyectofinal.ui.Contrato.ContratosFragment"
         android:label="Contratos Vigentes"

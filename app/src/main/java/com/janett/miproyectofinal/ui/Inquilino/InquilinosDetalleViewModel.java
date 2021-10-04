@@ -11,24 +11,32 @@ import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.modelo.Inquilino;
 import com.janett.miproyectofinal.request.ApiClient;
 
+import java.util.ArrayList;
+
 public class InquilinosDetalleViewModel extends ViewModel {
 
-    private MutableLiveData<Inquilino> inquilino;
-    Context context;
+    private MutableLiveData<Inquilino> inquilinoMutable;
+    private Inquilino inquilino;
 
-
-    public LiveData<Inquilino> getInquilino() {
-        if ( inquilino== null ) {
-            inquilino = new MutableLiveData<Inquilino>();
-        }
-        return inquilino;
+    public InquilinosDetalleViewModel()
+    {
+        super();
     }
 
-    public  void obtenerInquilinos(Bundle bundle) {
+    public LiveData<Inquilino> getInquilino()
+    {
+        if (inquilinoMutable == null)
+        {
+            inquilinoMutable = new MutableLiveData<>();
+        }
+        return inquilinoMutable;
+    }
 
-        Inmueble inmueble = (Inmueble) bundle.get("inmueble");
-        ApiClient api = ApiClient.getApi();
-        Inquilino inqui = api.obtenerInquilino(inmueble);
-        inquilino.setValue(inqui);
+
+    public void cargarInquilino(Bundle bundle)
+    {
+        inquilino = (Inquilino) bundle.getSerializable("inquilino");
+        inquilinoMutable.setValue(inquilino);
+
     }
 }
