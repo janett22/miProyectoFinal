@@ -28,7 +28,7 @@ import com.janett.miproyectofinal.modelo.Inmueble;
 public class InmuebleDetalleFragment extends Fragment {
     private InmuebleDetalleViewModel inmuebleDetalleViewModel;
     private FragmentDetalleInmueblesBinding binding;
-
+    private Inmueble inmueble;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -42,30 +42,33 @@ public class InmuebleDetalleFragment extends Fragment {
         binding = FragmentDetalleInmueblesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        inmuebleDetalleViewModel.getInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
+        inmuebleDetalleViewModel.getdetalleInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
             public void onChanged(Inmueble inmueble) {
-                binding.tvCodigoInmueble.setText(inmueble.getIdInmueble()+"");
+                binding.tvCodigoInmueble.setText(inmueble.getId()+"");
                 binding.tvDireccionInmueble.setText(inmueble.getDireccion());
                 binding.tvAmbiestesInmueble.setText(inmueble.getAmbientes()+"");
                 binding.tvPrecioInmueble.setText(inmueble.getPrecio()+"");
-                binding.tvUsoInmueble.setText(inmueble.getUso());
-                binding.tvTipo.setText(inmueble.getTipo());
+                binding.tvUsoInmueble.setText(inmueble.getUsoNombre());
+                binding.tvTipo.setText(inmueble.getTipoNombre());
+
 
                 Glide.with(getContext())
                         .load(inmueble.getImagen())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivFotoInmueble);
+                binding.cbEstadoInmueble.setChecked(inmueble.isEstado());
+
+
                 binding.cbEstadoInmueble.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        inmuebleDetalleViewModel.cargarCambios(
-                                binding.cbEstadoInmueble.isChecked());
-
+                    inmuebleDetalleViewModel.cargarCambios(binding.cbEstadoInmueble.isChecked());
                     }
                 });
             }
         });
+
         inmuebleDetalleViewModel.setInmueble(getArguments());
         return root;
     }

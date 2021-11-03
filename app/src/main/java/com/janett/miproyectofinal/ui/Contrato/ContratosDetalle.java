@@ -38,10 +38,10 @@ public class ContratosDetalle extends Fragment {
         contratoDetalleViewModel.getContratosMutable().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
             @Override
             public void onChanged(Contrato contrato) {
-                codigo.setText(contrato.getIdContrato()+"");
+                codigo.setText(contrato.getId()+"");
                 fechaInicio.setText(contrato.getFechaInicio());
                 fechaFin.setText(contrato.getFechaFin());
-                monto.setText(contrato.getMontoAlquiler()+"");
+                monto.setText(contrato.getPrecio()+"");
                 inmueble.setText(contrato.getInmueble().getDireccion());
                 inquilino.setText(contrato.getInquilino().getNombre() + " " +contrato.getInquilino().getApellido());
 

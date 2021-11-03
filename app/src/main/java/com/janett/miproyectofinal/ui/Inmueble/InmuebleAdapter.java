@@ -55,6 +55,7 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("inmueble", inmueble);
                 Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.inmuebleDetalleFragment, bundle);

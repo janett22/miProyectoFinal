@@ -53,7 +53,7 @@ public class InmuebleFragment extends Fragment {
 
             }
         });
-        inmuebleViewModel.leerInmuebles();
+        inmuebleViewModel.LeerInmuebles();
         return root;
     }
 

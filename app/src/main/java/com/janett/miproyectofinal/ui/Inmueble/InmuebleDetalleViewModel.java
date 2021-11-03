@@ -3,6 +3,7 @@ package com.janett.miproyectofinal.ui.Inmueble;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -14,30 +15,55 @@ import androidx.lifecycle.ViewModelProvider;
 import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.request.ApiClient;
 
-public class InmuebleDetalleViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private MutableLiveData<Inmueble> inmueble;
+public class InmuebleDetalleViewModel extends AndroidViewModel {
+
+    private MutableLiveData<Inmueble> detalleInmueble;
     Context context;
-    ApiClient api;
     Inmueble inm;
 
+    public InmuebleDetalleViewModel(@NonNull Application application) {
+        super(application);
+    }
 
-    public LiveData<Inmueble> getInmueble() {
-        if ( inmueble== null ) {
-           inmueble = new MutableLiveData<>();
+
+    public LiveData<Inmueble> getdetalleInmueble() {
+        if ( detalleInmueble== null ) {
+          detalleInmueble = new MutableLiveData<>();
         }
-        return inmueble;
+        return detalleInmueble;
     }
 
     public void setInmueble(Bundle bundle) {
         inm= (Inmueble) bundle.getSerializable("inmueble");
-        this.inmueble.setValue(inm);
+        this.detalleInmueble.setValue(inm);
     }
 
-    public void cargarCambios(Boolean disponible) {
-        api = ApiClient.getApi();
-        inm.setEstado(disponible);
-        api.actualizarInmueble(inm);
+
+    public void cargarCambios(Boolean estado){
+
+        String token = ApiClient.getToken(context);
+        Call<Inmueble> actInmueble = ApiClient.getMyApiClient().actualizarInmueble(token, inm.getId());
+        actInmueble.enqueue(new Callback<Inmueble>() {
+            @Override
+            public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
+                if(response.isSuccessful()){
+                    detalleInmueble.postValue(response.body());
+                    inm.setEstado(estado);
+
+                    Toast.makeText(context, "Se actualizo con exito", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Inmueble> call, Throwable t) {
+                Toast.makeText(context, "Ocurrio un error inesperado"+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 

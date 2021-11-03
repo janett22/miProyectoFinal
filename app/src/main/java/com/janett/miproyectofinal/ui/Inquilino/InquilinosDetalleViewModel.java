@@ -1,42 +1,92 @@
 package com.janett.miproyectofinal.ui.Inquilino;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.janett.miproyectofinal.modelo.Contrato;
 import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.modelo.Inquilino;
 import com.janett.miproyectofinal.request.ApiClient;
 
 import java.util.ArrayList;
 
-public class InquilinosDetalleViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private MutableLiveData<Inquilino> inquilinoMutable;
-    private Inquilino inquilino;
+public class InquilinosDetalleViewModel extends AndroidViewModel {
+    private MutableLiveData<Contrato> detalleInquilinoMutable;
+    Context context;
 
-    public InquilinosDetalleViewModel()
-    {
-        super();
+
+    public InquilinosDetalleViewModel(@NonNull Application application) {
+
+        super(application);
+
+                context = application.getApplicationContext();
+
     }
 
-    public LiveData<Inquilino> getInquilino()
-    {
-        if (inquilinoMutable == null)
-        {
-            inquilinoMutable = new MutableLiveData<>();
+    public LiveData<Contrato> getInquilino() {
+        if (detalleInquilinoMutable == null) {
+            detalleInquilinoMutable = new MutableLiveData<>();
         }
-        return inquilinoMutable;
+        return detalleInquilinoMutable;
     }
-
-
     public void cargarInquilino(Bundle bundle)
     {
-        inquilino = (Inquilino) bundle.getSerializable("inquilino");
-        inquilinoMutable.setValue(inquilino);
 
+        Contrato contrato = (Contrato) bundle.getSerializable("InquilinoContrato");
+        String token = ApiClient.getToken(context);
+
+        Call<Contrato> detaInquilino =  ApiClient.getMyApiClient().detalleInquilino(contrato.getId(), token);
+        detaInquilino.enqueue(new Callback<Contrato>() {
+            @Override
+            public void onResponse(Call<Contrato> call, Response<Contrato> response) {
+                if(response.isSuccessful()){
+                    detalleInquilinoMutable.postValue(response.body());
+                }
+                else {
+                    Log.d("msj", "cargarDetalleAInquilino(): No encontrado.");
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Contrato> call, Throwable t) {
+                Log.d("msj", "OCURRIO ALGUN ERROR.");
+
+            }
+        });
+
+        /*
+        Call<Inquilino> detalleInquilino= ApiClient.getMyApiClient().obtenerInquilino(token,inmueble.getId());
+        detalleInquilino.enqueue(new Callback<Inquilino>() {
+            @Override
+            public void onResponse(Call<Inquilino> call, Response<Inquilino> response) {
+
+                if ( response.isSuccessful() ) {
+                    inquilinoMutable.postValue(response.body());
+                } else {
+                    Log.d("msj", "cargarDetalleAInquilino(): No encontrado.");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Inquilino> call, Throwable t) {
+                Log.d("msj", "OCURRIO ALGUN ERROR.");
+            }
+        });
+*/
     }
 }

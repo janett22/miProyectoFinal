@@ -24,11 +24,10 @@ import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.ui.Inmueble.InmuebleAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-
-public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHolder> {
-
+public class ContratoAdapter extends RecyclerView.Adapter<ContratoAdapter.ViewHolder>{
     private ArrayList<Inmueble> lista;
     private Context context;
     private LayoutInflater layoutInflater;

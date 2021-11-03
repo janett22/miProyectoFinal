@@ -22,7 +22,6 @@ import com.janett.miproyectofinal.ui.Inmueble.InmuebleAdapter;
 import java.util.ArrayList;
 
 public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolder> {
-
         private ArrayList<Pago> lista;
         private Context context;
         private LayoutInflater layoutInflater;
@@ -44,11 +43,11 @@ public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.codigo.setText(String.valueOf(lista.get(position).getIdPago()));
-        holder.numero.setText(String.valueOf(lista.get(position).getNumero()));
-        holder.fechaPago.setText(String.valueOf(lista.get(position).getFechaDePago()));
+            holder.codigo.setText(String.valueOf(lista.get(position).getId()));
+        holder.numero.setText(String.valueOf(lista.get(position).getNroPago()));
+        holder.fechaPago.setText(String.valueOf(lista.get(position).getFecha()));
         holder.importe.setText(String.valueOf(lista.get(position).getImporte()));
-        holder.codContrato.setText(String.valueOf(lista.get(position).getContrato().getIdContrato()));
+        holder.codContrato.setText(String.valueOf(lista.get(position).getIdContrato()));
 
     }
 

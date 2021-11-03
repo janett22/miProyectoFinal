@@ -4,23 +4,24 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Propietario implements Serializable {
+
     private int id;
-    private Long dni;
     private String nombre;
     private String apellido;
+    private String dni;
     private String email;
-    private String contraseña;
+    private String clave;
     private String telefono;
     private int avatar;
 
     public Propietario(){}
-    public Propietario(int id, Long dni, String nombre, String apellido, String email, String contraseña, String telefono, int avatar) {
+    public Propietario(int id, String dni, String nombre, String apellido, String email, String clave, String telefono, int avatar) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.contraseña = contraseña;
+        this.clave = clave;
         this.telefono = telefono;
         this.avatar=avatar;
     }
@@ -33,11 +34,11 @@ public class Propietario implements Serializable {
         this.id = id;
     }
 
-    public Long getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(Long dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -66,11 +67,11 @@ public class Propietario implements Serializable {
     }
 
     public String getContraseña() {
-        return contraseña;
+        return clave;
     }
 
     public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+        this.clave = clave;
     }
 
     public String getTelefono() {

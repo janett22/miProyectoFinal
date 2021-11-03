@@ -82,10 +82,12 @@ public class MenuActivity extends AppCompatActivity {
         TextView usuario = header.findViewById(R.id.tvUsuario);
         TextView mail = header.findViewById(R.id.tvMail);
         ApiClient api =  ApiClient.getApi();
-        Propietario p = api.obtenerUsuarioActual();
-        avatar.setImageResource(p.getAvatar());
-        usuario.setText(p.getNombre()+ " "+ p.getApellido());
-        mail.setText(p.getEmail());
+
+
+        //Propietario p = api.obtenerUsuarioActual();
+        //avatar.setImageResource(p.getAvatar());
+        //usuario.setText(p.getNombre()+ " "+ p.getApellido());
+        //mail.setText(p.getEmail());
 
     }
 

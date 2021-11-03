@@ -2,7 +2,6 @@ package com.janett.miproyectofinal.ui.Inquilino;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -23,60 +21,53 @@ import com.janett.miproyectofinal.modelo.Contrato;
 import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.modelo.Inquilino;
 import com.janett.miproyectofinal.request.ApiClient;
-import com.janett.miproyectofinal.ui.Inmueble.InmuebleAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-
-public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.ViewHolder>{
-    private ArrayList<Inmueble> lista;
+public class InquilinoContratoAdapter extends RecyclerView.Adapter<InquilinoContratoAdapter.ViewHolder>{
+    private ArrayList<Contrato> listaContrato;
     private Context context;
     private LayoutInflater layoutInflater;
 
 
-    public InquilinoAdapter(ArrayList<Inmueble> lista, Context context, LayoutInflater layoutInflater) {
-        this.lista = lista;
+    public InquilinoContratoAdapter(ArrayList<Contrato> listaContrato, Context context, LayoutInflater layoutInflater) {
+        this.listaContrato = listaContrato;
         this.context = context;
         this.layoutInflater = layoutInflater;
     }
 
     @NonNull
     @Override
-    public InquilinoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public InquilinoContratoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = layoutInflater.inflate(R.layout.fragment_item_inquilinos, parent, false);
-        return new InquilinoAdapter.ViewHolder(view);
+        return new InquilinoContratoAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InquilinoAdapter.ViewHolder holder, int position) {
-        ApiClient api = ApiClient.getApi();
-        Inmueble inmueble = lista.get(position);
-        Inquilino inquilino = api.obtenerInquilino(inmueble);
-        holder.tvDireccion.setText(lista.get(position).getDireccion());
-        Glide.with(context)
-                .load(inmueble.getImagen())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.ivFoto);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        Contrato contrato = listaContrato.get(position);
+
+        holder.tvDireccion.setText(contrato.getInmueble().getDireccion());
         holder.btInquilino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("inquilino", inquilino);
-                bundle.putSerializable("Inmueble", inmueble);
-               Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.inquilinosDetalleFragment, bundle);
+                bundle.putSerializable("inquilinoContrato", contrato);
+                Navigation.findNavController((Activity) context, R.id.nav_host_fragment_content_menu).navigate(R.id.inquilinosDetalleFragment, bundle);
+
 
             }
         });
+
 
     }
 
 
     @Override
     public int getItemCount() {
-        return lista.size();
+        return listaContrato.size();
     }
 
 
@@ -93,6 +84,4 @@ public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.View
         }
     }
 }
-
-
 

@@ -17,15 +17,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.janett.miproyectofinal.R;
+import com.janett.miproyectofinal.modelo.Contrato;
 import com.janett.miproyectofinal.modelo.Inmueble;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContratosFragment extends Fragment {
-
     private RecyclerView rvContrato;
     private ContratosViewModel contratoViewModel;
     private ContratoAdapter adapter;
+    private ContratosAdapter adapterContratosVigentes;
+
     private Context context;
 
     public static ContratosFragment newInstance() {
@@ -43,6 +46,16 @@ public class ContratosFragment extends Fragment {
         context = root.getContext();
         InicializarVista(root);
 
+        contratoViewModel.getContratoMutable().observe(getViewLifecycleOwner(), new Observer<ArrayList<Contrato>>() {
+            @Override
+            public void onChanged(ArrayList<Contrato> contratos) {
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false);
+                rvContrato.setLayoutManager(gridLayoutManager);
+                adapterContratosVigentes = new ContratosAdapter((ArrayList<Contrato>) contratos, getContext(), getLayoutInflater());
+                rvContrato.setAdapter(adapterContratosVigentes);
+
+            }
+        });
         contratoViewModel.getListaMutable().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
             @Override
             public void onChanged(ArrayList<Inmueble> inmuebles) {

@@ -47,7 +47,7 @@
         android:ems="10"
         android:focusedByDefault="true"
         android:hint="Usuario"
-        android:text="sonia@mail.com"
+        android:text="yami@gmail.com"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingStart="5dp"

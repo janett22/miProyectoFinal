@@ -22,6 +22,7 @@ import com.janett.miproyectofinal.modelo.Pago;
 import com.janett.miproyectofinal.ui.Inmueble.InmuebleAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PagosFragment extends Fragment {
 
@@ -41,16 +42,14 @@ public class PagosFragment extends Fragment {
 
         inicializar(root);
 
-        pagosViewModel.getPagos().observe(getViewLifecycleOwner(), new Observer<ArrayList<Pago>>() {
+        pagosViewModel.getPagos().observe(getViewLifecycleOwner(), new Observer<List<Pago>>() {
             @Override
-            public void onChanged(ArrayList<Pago> pagos) {
+            public void onChanged(List<Pago> pagos) {
 
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 1, RecyclerView.VERTICAL, false);
                 rvPagos.setLayoutManager(gridLayoutManager);
                 adapter = new PagosAdapter((ArrayList<Pago>) pagos, getContext(), getLayoutInflater());
                 rvPagos.setAdapter(adapter);
-
-
 
             }
         });

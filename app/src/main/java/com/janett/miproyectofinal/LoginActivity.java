@@ -47,22 +47,32 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
 
 
         inicializarVista();
-        vm.getResultadoMutable().observe(this, new Observer<String>() {
+
+        vm.getMensajeMutable().observe(this, new Observer<String>() {
             @Override
-            public void onChanged(String mensaje) {
+            public void onChanged(String s) {
                 new AlertDialog.Builder(LoginActivity.this)
-                        .setTitle("Informacion")
-                        .setMessage(mensaje)
-                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        .setTitle("Error")
+                        .setMessage(s)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
                             }
                         }).show();
-
             }
         });
 
+        vm.getResultadoMutable().observe((this), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+
+                Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(i);
+
+
+            }
+        });
 
     }
 
@@ -110,10 +120,11 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
         contrasenia = findViewById(R.id.etContraseña);
         icono = findViewById(R.id.ivIcono);
         btLogin = findViewById(R.id.btLogin);
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vm.login(usuario.getText().toString(), contrasenia.getText().toString());
+                vm.verificarDatos(usuario.getText().toString(), contrasenia.getText().toString());
             }
         });
     }

@@ -2,17 +2,13 @@ package com.janett.miproyectofinal.ui.Usuario;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.janett.miproyectofinal.modelo.Propietario;
 import com.janett.miproyectofinal.request.ApiClient;
@@ -21,14 +17,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PerfilViewModel extends AndroidViewModel {
+public class EditarPerfilViewModel {
+/*
+
     private MutableLiveData<Propietario> usuario;
     private MutableLiveData<Integer> editar;
     private MutableLiveData<Integer> guardar;
     private MutableLiveData<Boolean> estado;
     public MutableLiveData<String> errorMutable;
     Context context;
-   //ApiClient api;
+    //ApiClient api;
 
     public PerfilViewModel(@NonNull Application application) {
         super(application);
@@ -77,7 +75,7 @@ public class PerfilViewModel extends AndroidViewModel {
         String token = ApiClient.getToken(context);
         Call<Propietario> obtPropietario = ApiClient.getMyApiClient().obtenerPropietario(token);
         Log.d("Token" , token);
-       obtPropietario.enqueue(new Callback<Propietario>() {
+        obtPropietario.enqueue(new Callback<Propietario>() {
             @Override
             public void onResponse (Call<Propietario> call, Response<Propietario> response) {
                 if(response.isSuccessful())
@@ -105,31 +103,17 @@ public class PerfilViewModel extends AndroidViewModel {
         }else if(p.getTelefono().length() > 15 || p.getTelefono().length() < 9){
             errorMutable.setValue("El número de teléfono ingresado no es válido (9-15 dígitos)");
         }else{
-*/
 
-        String token = ApiClient.getToken(context);
-        Call<Propietario> actPerfil = ApiClient.getMyApiClient().modificarPerfil(token, propi);
-        actPerfil.enqueue(new Callback<Propietario>() {
-            @Override
-            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
-                if(response.isSuccessful()){
-                    usuario.postValue(response.body());
-                    estado.postValue(false);
-                    editar.postValue(View.VISIBLE);
-                    guardar.postValue(View.INVISIBLE);
-                }
-                else {
-                    errorMutable.postValue("Error "+response.message());
-                }
-            }
+
+
 
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
-              errorMutable.postValue("Error al editar el usuario");
+                errorMutable.postValue("Error al editar el usuario");
             }
         });
 
-        }
+    }
 
 
     public void cambiarEstado(){
@@ -137,6 +121,12 @@ public class PerfilViewModel extends AndroidViewModel {
         editar.setValue(View.INVISIBLE);
         guardar.setValue(View.VISIBLE);
     }
+
+
+}
+
+*/
+
 
 
 }
