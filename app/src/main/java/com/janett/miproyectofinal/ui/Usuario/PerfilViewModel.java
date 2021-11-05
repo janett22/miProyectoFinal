@@ -94,19 +94,7 @@ public class PerfilViewModel extends AndroidViewModel {
     }
 
     public void ModificarPropietario(Propietario propi){
-        /*if(propi.getNombre().isEmpty() || propi.getApellido().isEmpty() || propi.getDni().isEmpty() || p.getEmail().isEmpty() || p.getTelefono().isEmpty()){
-            errorMutable.setValue("Los campos no pueden estar vacios.");
-        }else if(p.getDni().toString().length() != 8){
-            errorMutable.setValue("El DNI ingresado no es válido (8 dígitos necesarios)");
-        }else if(p.getNombre().length() > 16 || p.getNombre().length() < 3 || p.getApellido().length() > 16 || p.getApellido().length() < 3){
-            errorMutable.setValue("El nombre/apellido ingresado no es válido (3 caracteres mínimo, 16 máximo)");
-        }else if(!Patterns.EMAIL_ADDRESS.matcher(p.getEmail()).matches()){
-            errorMutable.setValue("La dirección de correo electrónico ingresada no es válida.");
-        }else if(p.getTelefono().length() > 15 || p.getTelefono().length() < 9){
-            errorMutable.setValue("El número de teléfono ingresado no es válido (9-15 dígitos)");
-        }else{
-*/
-
+       Log.d("Salida", propi.toString());
         String token = ApiClient.getToken(context);
         Call<Propietario> actPerfil = ApiClient.getMyApiClient().modificarPerfil(token, propi);
         actPerfil.enqueue(new Callback<Propietario>() {
@@ -125,7 +113,7 @@ public class PerfilViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
-              errorMutable.postValue("Error al editar el usuario");
+              errorMutable.postValue("Error al conectarse con la api");
             }
         });
 

@@ -19,10 +19,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.janett.miproyectofinal.MenuActivity;
 import com.janett.miproyectofinal.R;
 
 import com.janett.miproyectofinal.modelo.Propietario;
 import com.janett.miproyectofinal.databinding.FragmentPerfilBinding;
+import com.janett.miproyectofinal.request.ApiClient;
 import com.janett.miproyectofinal.ui.Inmueble.InmuebleViewModel;
 
 public class PerfilFragment extends Fragment {
@@ -58,9 +62,16 @@ public class PerfilFragment extends Fragment {
                 nombre.setText(propietario.getNombre());
                 apellido.setText(propietario.getApellido());
                 email.setText(propietario.getEmail());
-                clave.setText(propietario.getContraseña());
+                clave.setText(propietario.getClave());
                 telefono.setText(propietario.getTelefono());
-                foto.setImageResource(propietario.getAvatar());
+                //foto.setText(propietario.getAvatar());
+                Glide.with(getContext())
+                        .load(ApiClient.SERVER + propietario.getAvatar())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(foto);
+
+
+                //
             }
         });
         perfilViewModel.getEstado().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
@@ -81,6 +92,7 @@ public class PerfilFragment extends Fragment {
 
                 btEditar.setVisibility(integer);
             }
+
         });
         perfilViewModel.getGuardar().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
@@ -130,7 +142,7 @@ public class PerfilFragment extends Fragment {
                 propietario.setNombre(nombre.getText().toString());
                 propietario.setApellido(apellido.getText().toString());
                 propietario.setEmail(email.getText().toString());
-                propietario.setContraseña(clave.getText().toString());
+                propietario.setClave(clave.getText().toString());
                 propietario.setTelefono(telefono.getText().toString());
 
                 perfilViewModel.ModificarPropietario(propietario);

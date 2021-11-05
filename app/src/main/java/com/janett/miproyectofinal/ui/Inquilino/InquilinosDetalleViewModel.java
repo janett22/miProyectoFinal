@@ -24,6 +24,7 @@ import retrofit2.Response;
 
 public class InquilinosDetalleViewModel extends AndroidViewModel {
     private MutableLiveData<Contrato> detalleInquilinoMutable;
+    private MutableLiveData<Inquilino> inquilinoMutableLiveData;
     Context context;
 
 
@@ -35,16 +36,28 @@ public class InquilinosDetalleViewModel extends AndroidViewModel {
 
     }
 
+    public LiveData<Inquilino> getInquilinoMutableLiveData(){
+        if(inquilinoMutableLiveData==null){
+            inquilinoMutableLiveData = new MutableLiveData<>();
+        } return inquilinoMutableLiveData;
+    }
     public LiveData<Contrato> getInquilino() {
         if (detalleInquilinoMutable == null) {
             detalleInquilinoMutable = new MutableLiveData<>();
         }
         return detalleInquilinoMutable;
     }
+
+    public void obtenerInqui(Bundle bundle){
+        Inquilino inqui = (Inquilino) bundle.getSerializable("Inquilino");
+        inquilinoMutableLiveData.setValue(inqui);
+    }
+
+
     public void cargarInquilino(Bundle bundle)
     {
 
-        Contrato contrato = (Contrato) bundle.getSerializable("InquilinoContrato");
+        Contrato contrato = (Contrato) bundle.getSerializable("inquilinoContrato");
         String token = ApiClient.getToken(context);
 
         Call<Contrato> detaInquilino =  ApiClient.getMyApiClient().detalleInquilino(contrato.getId(), token);
@@ -57,8 +70,6 @@ public class InquilinosDetalleViewModel extends AndroidViewModel {
                 else {
                     Log.d("msj", "cargarDetalleAInquilino(): No encontrado.");
                 }
-
-
             }
 
             @Override

@@ -51,19 +51,17 @@ public class InmuebleDetalleFragment extends Fragment {
                 binding.tvPrecioInmueble.setText(inmueble.getPrecio()+"");
                 binding.tvUsoInmueble.setText(inmueble.getUsoNombre());
                 binding.tvTipo.setText(inmueble.getTipoNombre());
-
+                binding.cbEstadoInmueble.setChecked(inmueble.isEstado());
 
                 Glide.with(getContext())
                         .load(inmueble.getImagen())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivFotoInmueble);
-                binding.cbEstadoInmueble.setChecked(inmueble.isEstado());
-
 
                 binding.cbEstadoInmueble.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                    inmuebleDetalleViewModel.cargarCambios(binding.cbEstadoInmueble.isChecked());
+                    inmuebleDetalleViewModel.cargarCambios(getArguments());
                     }
                 });
             }

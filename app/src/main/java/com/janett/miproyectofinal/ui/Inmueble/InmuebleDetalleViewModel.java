@@ -27,6 +27,9 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
 
     public InmuebleDetalleViewModel(@NonNull Application application) {
         super(application);
+
+
+        context = application.getApplicationContext();
     }
 
 
@@ -43,7 +46,9 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
     }
 
 
-    public void cargarCambios(Boolean estado){
+    public void cargarCambios(Bundle bundle){
+
+        inm= (Inmueble) bundle.getSerializable("inmueble");
 
         String token = ApiClient.getToken(context);
         Call<Inmueble> actInmueble = ApiClient.getMyApiClient().actualizarInmueble(token, inm.getId());
@@ -52,8 +57,6 @@ public class InmuebleDetalleViewModel extends AndroidViewModel {
             public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
                 if(response.isSuccessful()){
                     detalleInmueble.postValue(response.body());
-                    inm.setEstado(estado);
-
                     Toast.makeText(context, "Se actualizo con exito", Toast.LENGTH_SHORT).show();
                 }
             }

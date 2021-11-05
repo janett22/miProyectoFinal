@@ -17,12 +17,17 @@ import androidx.navigation.Navigation;
 import com.janett.miproyectofinal.R;
 import com.janett.miproyectofinal.modelo.Contrato;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ContratosDetalle extends Fragment {
     private TextView codigo, fechaInicio, fechaFin, inmueble, inquilino, monto;
     private Button btPagos;
 
     private ContratosDetalleViewModel contratoDetalleViewModel;
 
+    private Contrato contrato;
 
 
     @Override
@@ -39,8 +44,13 @@ public class ContratosDetalle extends Fragment {
             @Override
             public void onChanged(Contrato contrato) {
                 codigo.setText(contrato.getId()+"");
-                fechaInicio.setText(contrato.getFechaInicio());
+                DateTimeFormatter dt= DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+                LocalDate ldT=LocalDate.parse(contrato.getFechaInicio(), dt);
+                fechaInicio.setText(ldT.toString());
                 fechaFin.setText(contrato.getFechaFin());
+                DateTimeFormatter dtF= DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+                LocalDate ldF=LocalDate.parse(contrato.getFechaInicio(), dt);
+                fechaFin.setText(ldF.toString());
                 monto.setText(contrato.getPrecio()+"");
                 inmueble.setText(contrato.getInmueble().getDireccion());
                 inquilino.setText(contrato.getInquilino().getNombre() + " " +contrato.getInquilino().getApellido());
@@ -69,7 +79,16 @@ public class ContratosDetalle extends Fragment {
     public void inicializar(View view){
         codigo = view.findViewById(R.id.tvCodigoContrato);
         fechaInicio = view.findViewById(R.id.tvFechaInicio);
+
+        //LocalDateTime fechIn= LocalDateTime.parse(contrato.getFechaInicio());
+        //LocalDate fechaLocal = fechIn.toLocalDate();
+        //fechaInicio.setText(fechaLocal.toString());
+
         fechaFin = view.findViewById(R.id.tvFechaFin);
+        //LocalDateTime fechFin= LocalDateTime.parse(contrato.getFechaFin());
+        //LocalDate fechLocal = fechIn.toLocalDate();
+        //fechaFin.setText(fechLocal.toString());
+
         monto = view.findViewById(R.id.tvMontoAqluiler);
         inquilino = view.findViewById(R.id.tvInquilino);
         inmueble = view.findViewById(R.id.tvInmueble);

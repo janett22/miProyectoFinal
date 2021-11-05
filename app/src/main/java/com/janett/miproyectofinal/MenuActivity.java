@@ -1,11 +1,14 @@
 package com.janett.miproyectofinal;
 
+import android.icu.text.MessagePattern;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,6 +29,9 @@ public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuBinding binding;
+    private MenuViewModel menuViewModel;
+    private ImageView avatar;
+    private TextView usuario,mail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,30 @@ public class MenuActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         iniciarHeader(navigationView);
+
+        View header = navigationView.getHeaderView(0);
+
+        menuViewModel =new ViewModelProvider(this).get(MenuViewModel.class);
+
+        menuViewModel.getCargarPropietario().observe(this, new Observer<Propietario>() {
+            @Override
+            public void onChanged(Propietario propietario) {
+
+                avatar = header.findViewById(R.id.imgAvatar);
+                usuario = header.findViewById(R.id.tvUsuario);
+                mail = header.findViewById(R.id.tvMail);
+
+                Glide.with(MenuActivity.this)
+                        .load(ApiClient.SERVER + propietario.getAvatar())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(avatar);
+
+                usuario.setText(propietario.getNombre()+ " "+propietario.getApellido());
+                mail.setText(propietario.getEmail());
+
+            }
+        });
+        menuViewModel.cargarHeaderPropietraio();
 
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -77,13 +107,10 @@ public class MenuActivity extends AppCompatActivity {
 
 
     private void iniciarHeader(NavigationView navigationView){
-        View header = navigationView.getHeaderView(0);
-        ImageView avatar = header.findViewById(R.id.imgAvatar);
-        TextView usuario = header.findViewById(R.id.tvUsuario);
-        TextView mail = header.findViewById(R.id.tvMail);
-        ApiClient api =  ApiClient.getApi();
 
 
+        //cargar header con datos locales de la plantilla
+        //ApiClient api =  ApiClient.getApi();
         //Propietario p = api.obtenerUsuarioActual();
         //avatar.setImageResource(p.getAvatar());
         //usuario.setText(p.getNombre()+ " "+ p.getApellido());

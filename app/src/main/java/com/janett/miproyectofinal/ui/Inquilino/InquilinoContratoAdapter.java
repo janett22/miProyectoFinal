@@ -48,8 +48,15 @@ public class InquilinoContratoAdapter extends RecyclerView.Adapter<InquilinoCont
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Contrato contrato = listaContrato.get(position);
-
+        Inquilino inquilino = contrato.getInquilino();
         holder.tvDireccion.setText(contrato.getInmueble().getDireccion());
+        Glide.with(context)
+                .load(ApiClient.SERVER+contrato.getInmueble().getImagen())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.ivFoto);
+
+
+
         holder.btInquilino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

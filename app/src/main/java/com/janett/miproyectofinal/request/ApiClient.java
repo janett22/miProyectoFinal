@@ -1,5 +1,7 @@
 package com.janett.miproyectofinal.request;
 
+import static java.net.Authenticator.RequestorType.SERVER;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -58,7 +60,7 @@ public class ApiClient {
     //Para que pueda iniciar sesion
     public Propietario login(String mail, final String password){
         for(Propietario propietario:propietarios){
-            if(propietario.getEmail().equals(mail)&&propietario.getContraseña().equals(password)){
+            if(propietario.getEmail().equals(mail)&&propietario.getClave().equals(password)){
                 usuarioActual=propietario;
                 return propietario;
             }
@@ -196,7 +198,8 @@ public class ApiClient {
      return token;
  }
 
- public static final String PATH = "http://192.168.1.105:45455/api/";
+    public static final String SERVER = "http://192.168.1.105:45455";
+    private static final String PATH=SERVER+"/api/";
 
  private static ApiClient.MyApiInterface myApiInterface;
 

@@ -1,5 +1,7 @@
 package com.janett.miproyectofinal.modelo;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,10 +14,18 @@ public class Propietario implements Serializable {
     private String email;
     private String clave;
     private String telefono;
-    private int avatar;
+    private String avatar;
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 
     public Propietario(){}
-    public Propietario(int id, String dni, String nombre, String apellido, String email, String clave, String telefono, int avatar) {
+    public Propietario(int id, String dni, String nombre, String apellido, String email, String clave, String telefono, String avatar) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -66,14 +76,6 @@ public class Propietario implements Serializable {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return clave;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.clave = clave;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -82,12 +84,26 @@ public class Propietario implements Serializable {
         this.telefono = telefono;
     }
 
-    public int getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    @Override
+    public String toString() {
+        return "Propietario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
+                ", email='" + email + '\'' +
+                ", clave='" + clave + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
     }
 
     @Override

@@ -16,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.janett.miproyectofinal.MenuActivity;
 import com.janett.miproyectofinal.R;
 import com.janett.miproyectofinal.modelo.Contrato;
 import com.janett.miproyectofinal.modelo.Inmueble;
+import com.janett.miproyectofinal.request.ApiClient;
 
 import java.util.ArrayList;
 
@@ -46,7 +48,7 @@ public class ContratosAdapter  extends RecyclerView.Adapter<ContratosAdapter.Vie
             Contrato contrato = inmueblesAlquilados.get(position);
             holder.tvDireccion.setText(contrato.getInmueble().getDireccion());
             Glide.with(context)
-                    .load(contrato.getInmueble().getImagen())
+                    .load(ApiClient.SERVER+contrato.getInmueble().getImagen())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.ivFoto);
 

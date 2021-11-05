@@ -39,6 +39,21 @@ public class InquilinosDetalleFragment extends Fragment {
         binding= FragmentDetalleInquilinosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+       /* inquilinoDetalleViewModel.getInquilinoMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
+            @Override
+            public void onChanged(Inquilino inquilino) {
+                binding.tvCodigo.setText(inquilino.getId()+"");
+                binding.tvNombre.setText(inquilino.getNombre());
+                binding.tvApellido.setText(inquilino.getApellido());
+                binding.tvDNI.setText(inquilino.getDni());
+                binding.tvEmail.setText(inquilino.getEmail());
+                binding.tvTelefono.setText(inquilino.getTelefono());
+                binding.tvGarante.setText(inquilino.getNombreGarante());
+                binding.tvTelefonoGarante.setText(inquilino.getTelefonoGarante());
+
+            }
+        });
+        */
         inquilinoDetalleViewModel.getInquilino().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
            @Override
            public void onChanged(Contrato contrato) {
@@ -68,7 +83,9 @@ public class InquilinosDetalleFragment extends Fragment {
             }
         });
   */
+
         inquilinoDetalleViewModel.cargarInquilino(getArguments());
+       // inquilinoDetalleViewModel.obtenerInqui(getArguments());
         return root;
     }
 }

@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Inmueble implements Serializable {
-
     private int id;
     private String direccion;
     private int uso;
@@ -13,7 +12,7 @@ public class Inmueble implements Serializable {
     private int ambientes;
     private double precio;
     private int idPropietario;
-    private boolean estado= true;
+    private boolean estado=true;
     private String imagen;
     private Propietario duenio;
     private String tipoNombre;

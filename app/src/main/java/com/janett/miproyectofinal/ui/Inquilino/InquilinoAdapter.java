@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.janett.miproyectofinal.MenuActivity;
 import com.janett.miproyectofinal.R;
 import com.janett.miproyectofinal.modelo.Contrato;
 import com.janett.miproyectofinal.modelo.Inmueble;
@@ -56,7 +57,7 @@ public class InquilinoAdapter extends RecyclerView.Adapter<InquilinoAdapter.View
         Inquilino inquilino = api.obtenerInquilino(inmueble);
         holder.tvDireccion.setText(lista.get(position).getDireccion());
         Glide.with(context)
-                .load(inmueble.getImagen())
+                .load(ApiClient.SERVER+inmueble.getImagen())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivFoto);
 

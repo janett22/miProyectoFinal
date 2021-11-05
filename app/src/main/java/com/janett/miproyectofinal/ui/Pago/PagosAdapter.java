@@ -19,6 +19,8 @@ import com.janett.miproyectofinal.modelo.Inmueble;
 import com.janett.miproyectofinal.modelo.Pago;
 import com.janett.miproyectofinal.ui.Inmueble.InmuebleAdapter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolder> {
@@ -43,9 +45,14 @@ public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            Pago pagos= lista.get(position);
+
             holder.codigo.setText(String.valueOf(lista.get(position).getId()));
         holder.numero.setText(String.valueOf(lista.get(position).getNroPago()));
-        holder.fechaPago.setText(String.valueOf(lista.get(position).getFecha()));
+        //holder.fechaPago.setText(String.valueOf(lista.get(position).getFecha()));
+        DateTimeFormatter dt= DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        LocalDate ldP=LocalDate.parse(lista.get(position).getFecha(), dt);
+        holder.fechaPago.setText(ldP.toString());
         holder.importe.setText(String.valueOf(lista.get(position).getImporte()));
         holder.codContrato.setText(String.valueOf(lista.get(position).getIdContrato()));
 
@@ -66,7 +73,10 @@ public class PagosAdapter extends RecyclerView.Adapter<PagosAdapter.ViewHolder> 
             codigo= itemView.findViewById(R.id.tvCodigo);
             numero = itemView.findViewById(R.id.tvNumero);
             importe = itemView.findViewById(R.id.tvImporte);
+
             fechaPago = itemView.findViewById(R.id.tvFecha);
+
+
             codContrato = itemView.findViewById(R.id.tvCodigoContrato);
     }
 }
